@@ -1,13 +1,10 @@
 services:
   - type: web
     name: pdf-page-mixer-backend
-    runtime: java
+    runtime: docker
     plan: free
-    rootDir: backend
-    buildCommand: ./mvnw -DskipTests package || mvn -DskipTests package
-    startCommand: java -jar target/*.jar
+    dockerfilePath: ./Dockerfile
+    port: 8080
     envVars:
-      - key: JAVA_VERSION
-        value: 17
       - key: app.frontend-origin
         sync: false

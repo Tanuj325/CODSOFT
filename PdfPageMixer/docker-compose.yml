@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - app.frontend-origin=http://localhost:5173
+    networks:
+      - pdf-mixer
+
+networks:
+  pdf-mixer:
+    driver: bridge
