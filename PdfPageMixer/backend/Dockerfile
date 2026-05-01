@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.9.10-eclipse-temurin-17 AS builder
+FROM maven:3.9.10-openjdk-17 AS builder
 
 WORKDIR /build
 
@@ -10,7 +10,7 @@ COPY src src
 RUN mvn -DskipTests package
 
 # Runtime stage
-FROM eclipse-temurin:17-jre-slim
+FROM openjdk:17-jre-slim
 
 WORKDIR /app
 
